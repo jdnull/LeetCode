@@ -7,4 +7,5 @@ For example, given input 43261596 (represented in binary as `0000001010010100000
 ###### Follow up:
 If this function is called many times, how would you optimize it?
 
-Related problem: Reverse Integer
+######Related problem: 
+Reverse Integer
