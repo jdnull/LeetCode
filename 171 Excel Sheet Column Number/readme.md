@@ -13,3 +13,6 @@ For example:
     AA -> 27
     AB -> 28
 ```
+
+###### Tags:
+Math

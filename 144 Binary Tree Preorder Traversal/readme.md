@@ -17,3 +17,6 @@ Given binary tree `{1,#,2,3}`,
 return `[3,2,1]`.
 
 **Note:** Recursive solution is trivial, could you do it iteratively?
+
+###### Tags:
+Tree, Stack
