@@ -32,7 +32,6 @@ public:
                     return findKSortedArrays(A, m, B, med_b, K);
                 else  // if the first half of B and the whole A have less than K elements, then dropped the first half of A
                     return findKSortedArrays(&A[med_a+1], m-med_a-1, B, n, K-med_a-1);
-                
             }
             else
             {// if the first half of A and the whole B have NO less than K elements, then dropped the second half of A
