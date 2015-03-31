@@ -25,7 +25,6 @@ public:
     }
 };
 
-#define COUNT 3
 int main() {
     Solution s;
     
