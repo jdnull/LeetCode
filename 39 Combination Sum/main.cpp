@@ -1,0 +1,56 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+class Solution {
+public:
+    vector<vector<int> > combinationSum(vector<int>& candidates, int target) {
+        sort(candidates.begin(), candidates.end());
+        
+        vector<vector<int> > vv;
+        vector<int> v;
+
+        subCombinationSum(candidates, vv, v, target);
+        
+        return vv;
+    }
+    
+    void subCombinationSum(vector<int>& candidates, vector<vector<int> >& vv, vector<int>& v, int target) {
+        if (target == 0) {
+            vv.push_back(v);
+            v.pop_back();
+            return;
+        }
+        for (vector<int>::iterator it = candidates.begin(); it != candidates.end(); it++) {
+            if (v.size() > 0 && *it < v[v.size()-1]) {
+                continue;
+            }
+            if (target - *it >= 0) {
+                v.push_back(*it);
+                subCombinationSum(candidates, vv, v, target - *it);
+            } else {
+                v.pop_back();
+                return;
+            }
+        }
+        if (!v.empty()) {
+            v.pop_back();
+        }
+    }
+};
+
+#define COUNT 4
+int main() {
+    int a[COUNT] = {2,3,6,7};
+    vector<int> candidates(a, &a[COUNT]);
+    Solution s;
+    vector<vector<int> > vv = s.combinationSum(candidates, 7);
+    for (vector<vector<int> >::iterator it0 = vv.begin(); it0 != vv.end(); it0++) {
+        for (vector<int>::iterator it1 = it0->begin(); it1 != it0->end(); it1++) {
+            cout << *it1 << " ";
+        }
+        cout << endl;
+    }
+}
