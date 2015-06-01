@@ -6,11 +6,11 @@ using namespace std;
 
 class Solution {
 public:
-    vector<int> getRow(int numRows) {
+    vector<int> getRow(int rowIndex) {
         vector<int> v;
-        v.resize(numRows+1, 1);
+        v.resize(rowIndex+1, 1);
         
-        for (int i = 1; i < numRows; i++) {
+        for (int i = 1; i < rowIndex; i++) {
             for (int j = i; j > 0; j--) {
                 v[j] = v[j] + v[j-1];
             }
