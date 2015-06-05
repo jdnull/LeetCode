@@ -1,8 +1,7 @@
 # solutions wait to solve
 
-## Dynamic Programming
-
-- 10
-- 188
+- 10 DP, Backtracking
+- 188 DP
+- 84 Array, Stack
 
 ## 
