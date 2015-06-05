@@ -18,6 +18,25 @@ public:
 //    int searchInsert(int A[], int n, int target) {
 //        return search(A, 0, n - 1, target);
 //    }
+
+    // not my code, binary search
+//    int searchInsert(vector<int>& nums, int target) {
+//        int low = 0;
+//        int high = nums.size() - 1;
+//        
+//        while(low <= high) {
+//            int mid = (low + high) / 2;
+//            if (nums[mid] == target) {
+//                return mid;
+//            } else if (nums[mid] < target) {
+//                low = mid + 1;
+//            } else {
+//                high = mid - 1;
+//            }
+//        }
+//        
+//        return low;
+//    }
     
     int searchInsert(vector<int>& nums, int target) {
         if (nums.size() == 0) {
