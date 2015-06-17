@@ -8,11 +8,34 @@
  * };
  */
  
+#include <vector>
 #include <stack>
 #include <set>
  
 class Solution {
 public:
+    // not my code
+    // vector<int> postorderTraversal(TreeNode *root) {
+    //     vector<int> postOrder;
+    //     if(root == NULL) return postOrder;
+        
+    //     TreeNode *pre = NULL;
+    //     vector<TreeNode *> nodes;
+    //     nodes.push_back(root);
+    //     while(!nodes.empty()) {
+    //         TreeNode *n = nodes.back();
+    //         if((n->left == NULL && n->right) || (pre != NULL && (pre == n->left || pre == n->right))) {
+    //             postOrder.push_back(n->val);
+    //             pre = n;
+    //             postOrder.pop_back();
+    //         } else {
+    //             if(n->right) nodes.push_back(n->right);
+    //             if(n->left) nodes.push_back(n->left);
+    //         }
+    //     }
+    //     return postOrder;
+    // }
+    
     vector<int> postorderTraversal(TreeNode *root) {
         vector<int> retVector;
         
