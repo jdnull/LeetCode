@@ -7,33 +7,59 @@ using namespace std;
 
 class Solution {
 public:
+    // optimize space complexity from O(n*n) to O(n)
     int uniquePathsWithObstacles(vector<vector<int>>& obstacleGrid) {
         if (obstacleGrid.size() == 0) {
             return 0;
         }
         
-        vector<vector<int> > vv;
-        for (int i = 0; i < obstacleGrid.size(); i++) {
-            vector<int> v;
-            v.resize(obstacleGrid[0].size());
-            vv.push_back(v);
-        }
+        vector<int> v;
+        v.resize(obstacleGrid[0].size());
         
         for (int i = obstacleGrid.size()-1; i >= 0; i--) {
             for (int j = obstacleGrid[0].size()-1; j >= 0; j--) {
                 if (i == obstacleGrid.size()-1 && j == obstacleGrid[0].size()-1) {
-                    vv[i][j] = obstacleGrid[i][j] == 1 ? 0 : 1;
+                    v[j] = obstacleGrid[i][j] == 1 ? 0 : 1;
                 } else if (i == obstacleGrid.size()-1) {
-                    vv[i][j] = obstacleGrid[i][j] == 1 ? 0 : vv[i][j+1];
+                    v[j] = obstacleGrid[i][j] == 1 ? 0 : v[j+1];
                 } else if (j == obstacleGrid[0].size()-1) {
-                    vv[i][j] = obstacleGrid[i][j] == 1 ? 0 : vv[i+1][j];
+                    v[j] = obstacleGrid[i][j] == 1 ? 0 : v[j];
                 } else {
-                    vv[i][j] = obstacleGrid[i][j] == 1 ? 0 : vv[i+1][j] + vv[i][j+1];
+                    v[j] = obstacleGrid[i][j] == 1 ? 0 : v[j] + v[j+1];
                 }
             }
         }
-        return vv[0][0];
+        return v[0];
     }
+    
+    // space complexity O(n*n)
+    // int uniquePathsWithObstacles(vector<vector<int>>& obstacleGrid) {
+    //     if (obstacleGrid.size() == 0) {
+    //         return 0;
+    //     }
+        
+    //     vector<vector<int> > vv;
+    //     for (int i = 0; i < obstacleGrid.size(); i++) {
+    //         vector<int> v;
+    //         v.resize(obstacleGrid[0].size());
+    //         vv.push_back(v);
+    //     }
+        
+    //     for (int i = obstacleGrid.size()-1; i >= 0; i--) {
+    //         for (int j = obstacleGrid[0].size()-1; j >= 0; j--) {
+    //             if (i == obstacleGrid.size()-1 && j == obstacleGrid[0].size()-1) {
+    //                 vv[i][j] = obstacleGrid[i][j] == 1 ? 0 : 1;
+    //             } else if (i == obstacleGrid.size()-1) {
+    //                 vv[i][j] = obstacleGrid[i][j] == 1 ? 0 : vv[i][j+1];
+    //             } else if (j == obstacleGrid[0].size()-1) {
+    //                 vv[i][j] = obstacleGrid[i][j] == 1 ? 0 : vv[i+1][j];
+    //             } else {
+    //                 vv[i][j] = obstacleGrid[i][j] == 1 ? 0 : vv[i+1][j] + vv[i][j+1];
+    //             }
+    //         }
+    //     }
+    //     return vv[0][0];
+    // }
 };
 
 #define COUNT 3
