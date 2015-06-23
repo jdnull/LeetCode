@@ -29,7 +29,7 @@ public:
         
         for(int i = level; i < candidates.size(); i++) {
             if (target-candidates[i] < 0) {
-                return; // pruning, bigger with higher index
+                return; // pruning, bigger value with higher index
             }
             v.push_back(candidates[i]);
             backtracking(vv, v, candidates, target-candidates[i], i);
