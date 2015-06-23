@@ -6,6 +6,35 @@ using namespace std;
 
 class Solution {
 public:
+    // not my code, permutation generation
+//    bool nextPermutation(vector<int> &num) {
+//        int len=num.size()-1;
+//        for(int pos=len-1;pos>=0;--pos){
+//            if(num[pos]<num[pos+1]){
+//                int smallNum=num[pos];
+//                int lastPosBiggerThanSmallNum=
+//                len-(find_if(num.rbegin(),
+//                             num.rend(),(bind2nd(greater<int>(),smallNum)))-
+//                     num.rbegin());
+//                swap(num[pos],num[lastPosBiggerThanSmallNum]);
+//                sort(num.begin()+pos+1,num.end());
+//                return true;
+//            }
+//        }
+//        return false;
+//    }
+//    vector<vector<int> > permuteUnique(vector<int> &num){
+//        vector<vector<int> > res;
+//        if(num.empty())
+//            return res;
+//        sort(num.begin(),num.end());
+//        res.push_back(num);
+//        while(nextPermutation(num)){
+//            res.push_back(num);
+//        }
+//        return res;
+//    }
+    
     // not my code, faster
     void recursion(vector<int> num, int i, vector<vector<int> > &res) {
         if (i == num.size()-1) {
