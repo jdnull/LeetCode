@@ -6,28 +6,33 @@ using namespace std;
 
 class Solution {
 public:
-    vector<vector<int> > combinationSum2(vector<int> &num, int target) {
-        vector<vector<int>> res;
-        sort(num.begin(),num.end());
-        vector<int> local;
-        findCombination(res, 0, target, local, num);
-        return res;
+    // not my code, simpler
+    vector<vector<int>> combinationSum2(vector<int>& candidates, int target) {
+        vector<vector<int>> vv;
+        vector<int> v;
+        sort(candidates.begin(), candidates.end());
+        
+        backtracking(vv, v, candidates, target, 0);
+        
+        return vv;
     }
     
-    void findCombination(vector<vector<int>>& res, const int order, const int target, vector<int>& local, const vector<int>& num) {
-        if(target==0) {
-            res.push_back(local);
+    void backtracking(vector<vector<int>> &vv, vector<int> v, vector<int>& candidates, int target, int level) {
+        if (target == 0) {
+            vv.push_back(v);
             return;
         }
-        else {
-            for(int i = order;i<num.size();i++) { // iterative component
-                if(num[i]>target) return;
-                ////// this condition is hard to set /////
-                if(i&&num[i]==num[i-1]&&i>order) continue; // check duplicate combination
-                //
-                local.push_back(num[i]),
-                findCombination(res,i+1,target-num[i],local,num); // recursive componenet
-                local.pop_back();
+        
+        for(int i = level; i < candidates.size(); i++) {
+            if (target-candidates[i] < 0) {
+                return; // pruning, bigger value with higher index
+            }
+            v.push_back(candidates[i]);
+            backtracking(vv, v, candidates, target-candidates[i], i+1);
+            v.pop_back();
+            
+            while(i < candidates.size()-1 && candidates[i] == candidates[i+1]) {
+                i++; // skip duplicate element
             }
         }
     }

@@ -9,11 +9,7 @@ public:
     // not my code, faster
     vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
         vector<vector<int>> vv;
-        if (candidates.size() == 0 || target < 0) {
-            return vv;
-        }
         vector<int> v;
-        
         sort(candidates.begin(), candidates.end());
         
         backtracking(vv, v, candidates, target, 0);
