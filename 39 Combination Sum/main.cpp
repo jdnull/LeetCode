@@ -6,39 +6,101 @@ using namespace std;
 
 class Solution {
 public:
-    vector<vector<int> > combinationSum(vector<int>& candidates, int target) {
+    // not my code, faster
+    vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
+        vector<vector<int>> vv;
+        if (candidates.size() == 0 || target < 0) {
+            return vv;
+        }
+        vector<int> v;
+        
         sort(candidates.begin(), candidates.end());
         
-        vector<vector<int> > vv;
-        vector<int> v;
-
-        subCombinationSum(candidates, vv, v, target);
+        backtracking(vv, v, candidates, target, 0);
         
         return vv;
     }
     
-    void subCombinationSum(vector<int>& candidates, vector<vector<int> >& vv, vector<int>& v, int target) {
+    void backtracking(vector<vector<int>> &vv, vector<int> v, vector<int>& candidates, int target, int level) {
         if (target == 0) {
             vv.push_back(v);
-            v.pop_back();
             return;
         }
-        for (vector<int>::iterator it = candidates.begin(); it != candidates.end(); it++) {
-            if (v.size() > 0 && *it < v[v.size()-1]) {
-                continue;
+        
+        for(int i = level; i < candidates.size(); i++) {
+            if (target-candidates[i] < 0) {
+                return; // pruning, bigger with higher index
             }
-            if (target - *it >= 0) {
-                v.push_back(*it);
-                subCombinationSum(candidates, vv, v, target - *it);
-            } else {
-                v.pop_back();
-                return;
-            }
-        }
-        if (!v.empty()) {
+            v.push_back(candidates[i]);
+            backtracking(vv, v, candidates, target-candidates[i], i);
             v.pop_back();
         }
     }
+
+    // not my code, simpler, slower
+    // vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
+    //     vector<vector<int>> vv;
+    //     if (candidates.size() == 0 || target < 0) {
+    //         return vv;
+    //     }
+    //     vector<int> v;
+        
+    //     sort(candidates.begin(), candidates.end());
+        
+    //     backtracking(vv, v, candidates, target, 0);
+        
+    //     return vv;
+    // }
+    
+    // void backtracking(vector<vector<int>> &vv, vector<int> v, vector<int>& candidates, int target, int level) {
+    //     if (target == 0) {
+    //         vv.push_back(v);
+    //         return;
+    //     } else if (target < 0) {
+    //         return;
+    //     }
+        
+    //     for(int i = level; i < candidates.size(); i++) {
+    //         v.push_back(candidates[i]);
+    //         backtracking(vv, v, candidates, target-candidates[i], i);
+    //         v.pop_back();
+    //     }
+    // }
+    
+    // my code, not simple
+    // vector<vector<int> > combinationSum(vector<int>& candidates, int target) {
+    //     sort(candidates.begin(), candidates.end());
+        
+    //     vector<vector<int> > vv;
+    //     vector<int> v;
+
+    //     subCombinationSum(candidates, vv, v, target);
+        
+    //     return vv;
+    // }
+    
+    // void subCombinationSum(vector<int>& candidates, vector<vector<int> >& vv, vector<int>& v, int target) {
+    //     if (target == 0) {
+    //         vv.push_back(v);
+    //         v.pop_back();
+    //         return;
+    //     }
+    //     for (vector<int>::iterator it = candidates.begin(); it != candidates.end(); it++) {
+    //         if (v.size() > 0 && *it < v[v.size()-1]) {
+    //             continue;
+    //         }
+    //         if (target - *it >= 0) {
+    //             v.push_back(*it);
+    //             subCombinationSum(candidates, vv, v, target - *it);
+    //         } else {
+    //             v.pop_back();
+    //             return;
+    //         }
+    //     }
+    //     if (!v.empty()) {
+    //         v.pop_back();
+    //     }
+    // }
 };
 
 #define COUNT 4
