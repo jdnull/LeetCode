@@ -26,7 +26,7 @@ public:
         return true;
     }
     
-    // faster, not code is not simple
+    // faster, but code is not simple
 //    bool canJump(vector<int>& nums) {
 //        if (nums.size() == 0) {
 //            return true;
