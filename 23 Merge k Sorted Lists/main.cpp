@@ -104,6 +104,7 @@ public:
 //    }
 /////////////////////////////////////////////////////////////////////////////
     
+    // time complexity, O(nlogn)
     ListNode* mergeKLists(vector<ListNode*>& lists) {
         if(lists.size() < 1) return NULL;
         while (lists.size() != 1) {
