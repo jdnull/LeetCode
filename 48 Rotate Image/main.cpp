@@ -60,10 +60,3 @@ public:
 int main() {
     return 0;
 }
-
-struct BT {
-    BT* left;
-    BT* right;
-    int val;
-    BT(int val) : val(val) {}
-};
