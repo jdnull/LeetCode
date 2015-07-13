@@ -7,3 +7,6 @@ the subarray `[4,3]` has the minimal length under the problem constraint.
 
 #####Tags:
 Array, Two Pointers, Binary Search
+
+#####SP:
+[H Minimum Window Substring](https://leetcode.com/problems/minimum-window-substring/)
